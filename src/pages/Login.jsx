@@ -1,5 +1,7 @@
 import Alert from "@mui/material/Alert";
+import { BASE_URL } from "../config/constant";
 import Button from "../components/button";
+import { CiTextAlignCenter } from "react-icons/ci";
 import FormField from "../components/field";
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
@@ -8,8 +10,8 @@ import { loginUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [username, setUsername] = React.useState("test");
+  const [password, setPassword] = React.useState("test123");
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState("");
 
@@ -30,7 +32,7 @@ const LoginForm = () => {
   const handleGoogleLogin = () => {
     console.log(process.env.GOOGLE_CLIENT_ID)
     const clientId = "1024595231493-t3o2dd6jojau5id9bpgk19lnimqf76n7.apps.googleusercontent.com";
-    const redirectUri = "http://localhost:5000/api/v1/google-signin";
+    const redirectUri = `${BASE_URL}/google-signin`;
     const scope = "openid email profile"; // Include 'openid' for id_token
     const responseType = "code";
     const state = "some_random_state"; // Optional, for CSRF protection
@@ -89,6 +91,7 @@ const LoginForm = () => {
             borderRadius: "20px",
             padding: "0.75rem",
           }}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
 
@@ -103,7 +106,9 @@ const LoginForm = () => {
             color: "white",
             borderRadius: "20px",
             padding: "0.75rem",
+            marginBottom: ".5rem",
           }}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
@@ -116,6 +121,7 @@ const LoginForm = () => {
           border="none"
           borderRadius="20px"
           padding="0.75rem"
+          marginTop="1rem"
           style={{
             width: "100%",
             fontWeight: "bold",
@@ -123,7 +129,7 @@ const LoginForm = () => {
           }}
           onClick={handleLogin}
         />
-
+        <Typography size="medium" color="white" style={{ marginTop: "1rem", textAlign:"center" }}> or </Typography>
         <Button
           label="Sign in with Google"
           backgroundColor="#4285F4"
@@ -141,7 +147,7 @@ const LoginForm = () => {
           }}
           onClick={handleGoogleLogin}
         />
-
+  
         <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
           <Typography size="small" color="white">
             Don't have an account?{" "}
