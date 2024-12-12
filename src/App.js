@@ -1,10 +1,12 @@
-// import AvailabilityPage from "./components/AvailabilityPage";
+import AvailabilityPage from "./components/AvailabilityPage";
 import LoginForm from "./components/loginForm";
 import React from "react";
+import AppRouter from "./routes/AppRouter";
 const App = () => {
   return (
     <div>
-      <LoginForm />
+      <AppRouter/>
+      {/* <LoginForm /> */}
        {/* <AvailabilityPage /> */}
     </div>
   );
