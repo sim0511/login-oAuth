@@ -48,7 +48,7 @@ export const loginUser = async (username, password) => {
 export const registerUser = async (username, email, password) => {
   // Implement the API call to register the user
   // This is a placeholder implementation
-  return fetch('/api/register', {
+  return fetch(`${BASE_URL}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
